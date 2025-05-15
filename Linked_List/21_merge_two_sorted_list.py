@@ -3,34 +3,24 @@ class ListNode:
         self.val = val
         self.next = next
 class Solution:
-    def mergeTwoLists(self, l1, l2):
-        dummy = ListNode()
-        cur = dummy
-        while l1 and l2:
-            if l1.val<=l2.val:
-                cur.next = l1
-                l1 = l1.next
+    def mergeTwoLists(self, list1, list2):
+        dummy = ListNode(0)
+        current=dummy
+        while list1 and list2:
+            if list1.val<list2.val:
+                current.next = ListNode(list1.val)
+                list1 = list1.next
             else:
-                cur.next = l2
-                l2 = l2.next
-            cur = cur.next
-        if l1:
-            cur.next = l1     
-        if l2:
-            cur.next = l2
+                current.next = ListNode(list2.val)
+                list2 = list2.next
+            current=current.next
+        if list1:
+            current.next = list1
+        if list2:
+            current.next =list2
         return dummy.next
-if __name__ == '__main__':
-    ob1 = ListNode(1)
-    ob1.next = ListNode(2)
-    ob1.next.next = ListNode(4)
-    ob2=ListNode(1)
-    ob2.next = ListNode(3)
-    ob2.next.next = ListNode(4)
-    ob = Solution()
-    ans = ob.mergeTwoLists(ob1,ob2)
-    tmp = ans
-    res = []
-    while tmp:
-        res.append(tmp.val)
-        tmp = tmp.next
-    print(res)
+list1 = [1,2,4]
+list2 = [1,3,4]
+ob= Solution()
+print(ob.mergeTwoLists(list1,list2))
+        
